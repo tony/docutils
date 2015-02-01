@@ -5,7 +5,7 @@
 :Author: David Goodger
 :Contact: docutils-develop@lists.sourceforge.net
 :Date: $Date$
-:Revision: $Revision$
+:Id: $Id$
 :Copyright: 2004 by `Enthought, Inc. <http://www.enthought.com>`_
 :License: `Enthought License`_ (BSD-style)
 

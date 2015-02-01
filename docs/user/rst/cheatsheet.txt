@@ -4,7 +4,7 @@
 :Info: See <http://docutils.sf.net/rst.html> for introductory docs.
 :Author: David Goodger <goodger@python.org>
 :Date: $Date$
-:Revision: $Revision$
+:Id: $Id$
 :Description: This is a "docinfo block", or bibliographic field list
 
 .. NOTE:: If you are reading this as HTML, please read
