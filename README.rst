@@ -39,8 +39,8 @@ This is for those who want to get up & running quickly.
 4. Use the front-end scripts to convert reStructuredText documents.
    Try for example::
 
-       rst2html.py FAQ.txt FAQ.html         (Unix)
-       python tools/rst2html.py FAQ.txt FAQ.html  (Windows)
+       rst2html.py rst FAQ.html         (Unix)
+       python tools/rst2html.py FAQ.rst FAQ.html  (Windows)
 
    See Usage_ below for details.
 
@@ -147,21 +147,21 @@ issues.
 Project Files & Directories
 ===========================
 
-* README.txt: You're reading it.
+* README.rst: You're reading it.
 
-* COPYING.txt: Public Domain Dedication and copyright details for
+* COPYING.rst: Public Domain Dedication and copyright details for
   non-public-domain files (most are PD).
 
-* FAQ.txt: Frequently Asked Questions (with answers!).
+* FAQ.rst: Frequently Asked Questions (with answers!).
 
-* RELEASE-NOTES.txt: Summary of the major changes in recent releases.
+* RELEASE-NOTES.rst: Summary of the major changes in recent releases.
 
-* HISTORY.txt: A detailed change log, for the current and all previous
+* HISTORY.rst: A detailed change log, for the current and all previous
   project releases.
 
-* BUGS.txt: Known bugs, and how to report a bug.
+* BUGS.rst: Known bugs, and how to report a bug.
 
-* THANKS.txt: List of contributors.
+* THANKS.rst: List of contributors.
 
 * setup.py: Installation script.  See "Installation" below.
 
@@ -171,26 +171,26 @@ Project Files & Directories
 * docutils: The project source directory, installed as a Python
   package.
 
-* docs: The project documentation directory.  Read ``docs/index.txt``
+* docs: The project documentation directory.  Read ``docs/index.rst``
   for an overview.
 
 * docs/user: The project user documentation directory.  Contains the
   following documents, among others:
 
-  - docs/user/tools.txt: Docutils Front-End Tools
-  - docs/user/latex.txt: Docutils LaTeX Writer
-  - docs/user/rst/quickstart.txt: A ReStructuredText Primer
+  - docs/user/tools.rst: Docutils Front-End Tools
+  - docs/user/latex.rst: Docutils LaTeX Writer
+  - docs/user/rst/quickstart.rst: A ReStructuredText Primer
   - docs/user/rst/quickref.html: Quick reStructuredText (HTML only)
 
 * docs/ref: The project reference directory.
-  ``docs/ref/rst/restructuredtext.txt`` is the reStructuredText
+  ``docs/ref/rst/restructuredtext.rst`` is the reStructuredText
   reference.
 
 * licenses: Directory containing copies of license files for
   non-public-domain files.
 
 * tools: Directory for Docutils front-end tools.  See
-  ``docs/user/tools.txt`` for documentation.
+  ``docs/user/tools.rst`` for documentation.
 
 * test: Unit tests.  Not required to use the software, but very useful
   if you're planning to modify it.  See `Running the Test Suite`_
@@ -281,7 +281,7 @@ You may want to begin with the "rst2html.py" front-end tool.  Most
 tools take up to two arguments, the source path and destination path,
 with STDIN and STDOUT being the defaults.  Use the "--help" option to
 the front-end tools for details on options and arguments.  See
-Docutils Front-End Tools (``docs/user/tools.txt``) for full documentation.
+Docutils Front-End Tools (``docs/user/tools.rst``) for full documentation.
 
 The package modules are continually growing and evolving.  The
 ``docutils.statemachine`` module is usable independently.  It contains
