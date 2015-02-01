@@ -69,6 +69,11 @@ class SettingsSpec(docutils.SettingsSpec):
           {'metavar': '<directory>', 'action': 'append',
            'validator': frontend.validate_colon_separated_string_list,
            'default': prune_default,}),
+         ('Destination directory for files that are processed.',
+          ['--destination'],
+          {'metavar': '<directory>', 'action': 'store',
+           'default': None}
+          ),
          ('Recursively ignore files matching any of the given '
           'wildcard (shell globbing) patterns (separated by colons).',
           ['--ignore'],
@@ -82,7 +87,7 @@ class SettingsSpec(docutils.SettingsSpec):
           ['--dry-run'],
           {'action': 'store_true', 'validator': frontend.validate_boolean}),))
 
-    relative_path_settings = ('prune',)
+    relative_path_settings = ('prune', 'destination')
     config_section = 'buildhtml application'
     config_section_dependencies = ('applications',)
 
@@ -188,6 +193,19 @@ class Builder:
             self.directories = self.settings_spec._directories
         else:
             self.directories = [os.getcwd()]
+
+        # add trailling slash to direcotries
+        self.directories = [os.path.join(d, '') for d in self.directories]
+
+        if (
+            len(self.directories) > 1 and
+            self.get_settings('', directory).destination
+        ):
+            raise Exception(
+                'buildhtml does not support --destination with multiple '
+                'directories.'
+            )
+
         for directory in self.directories:
             for root, dirs, files in os.walk(directory):
                 # os.walk by default this recurses down the tree,
@@ -228,7 +246,19 @@ class Builder:
         errout = ErrorOutput(encoding=settings.error_encoding)
         pub_struct = self.publishers[publisher]
         settings._source = os.path.normpath(os.path.join(directory, name))
-        settings._destination = settings._source[:-4]+'.html'
+
+
+        if settings.destination:
+            dest_dir = os.path.join(
+                settings.destination, directory.replace(self.directories[0], '')
+            )
+
+            if not os.path.exists(dest_dir):
+                os.makedirs(dest_dir)
+            settings._destination = os.path.join(dest_dir, name[:-4]+'.html')
+        else:
+            settings._destination = settings._source[:-4]+'.html'
+
         if not self.initial_settings.silent:
             errout.write('    ::: Processing: %s\n' % name)
             sys.stderr.flush()
